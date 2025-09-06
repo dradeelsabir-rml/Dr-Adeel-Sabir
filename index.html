@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. Adeel Sabir - MBBS Intern Tribute</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6)); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(220, 38, 38, 0)); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.7)); }
+    }
+    .page {
+      display: none;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .stethoscope-animation {
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      transition: filter 0.3s ease;
+    }
+    .stethoscope-animation:hover {
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+    }
+    .heartbeat {
+      animation: heartbeat 1.5s ease-in-out infinite;
+      color: #dc2626; /* Tailwind red-600 */
+      filter: drop-shadow(0 0 6px rgba(220, 38, 38, 0.7));
+      transition: filter 0.3s ease;
+    }
+    .pulse-effect {
+      animation: pulse 2s ease-in-out infinite;
+      color: #3b82f6; /* Tailwind blue-500 */
+      filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.7));
+      transition: filter 0.3s ease;
+    }
+    .medical-gradient {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+    }
+    .nav-active {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6);
+      transition: box-shadow 0.3s ease;
+    }
+    .nav-active:hover {
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.8);
+    }
+    /* Additional subtle shadow for cards */
+    .shadow-realistic {
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.12),
+        0 1px 2px rgba(0,0,0,0.24);
+      transition: box-shadow 0.3s ease;
+    }
+    .shadow-realistic:hover {
+      box-shadow:
+        0 10px 20px rgba(0,0,0,0.19),
+        0 6px 6px rgba(0,0,0,0.23);
+    }
+    /* Instagram link styling */
+    .insta-link {
+      @apply flex items-center space-x-3 text-pink-600 hover:text-pink-700 transition-colors font-semibold text-lg;
+    }
+    .insta-icon {
+      font-size: 1.8rem;
+      animation: float 3s ease-in-out infinite;
+      color: #E1306C;
+      filter: drop-shadow(0 0 6px rgba(225, 48, 108, 0.7));
+      transition: filter 0.3s ease;
+    }
+    .insta-icon:hover {
+      filter: drop-shadow(0 0 12px rgba(225, 48, 108, 1));
+    }
+    /* Phone icon animation */
+    .phone-icon {
+      font-size: 1.8rem;
+      animation: pulse 3s ease-in-out infinite;
+      color: #10B981; /* Tailwind green-500 */
+      filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.7));
+      transition: filter 0.3s ease;
+    }
+    .phone-icon:hover {
+      filter: drop-shadow(0 0 12px rgba(16, 185, 129, 1));
+    }
+    /* Email icon animation */
+    .email-icon {
+      font-size: 1.8rem;
+      animation: float 3s ease-in-out infinite;
+      color: #2563EB; /* Tailwind blue-600 */
+      filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.7));
+      transition: filter 0.3s ease;
+    }
+    .email-icon:hover {
+      filter: drop-shadow(0 0 12px rgba(37, 99, 235, 1));
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    /* Gallery styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+      .gallery-item img {
+        height: 200px;
+      }
+      nav .flex {
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+      }
+      h1 {
+        font-size: 2.5rem !important;
+      }
+      .text-5xl {
+        font-size: 3rem !important;
+      }
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white;
+      padding: 8px;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .gallery-caption {
+      padding: 12px 8px 8px;
+      text-align: center;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="medical-gradient min-h-screen font-sans">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm shadow-lg z-50">
+    <div class="container mx-auto px-4 py-3 overflow-x-auto scrollbar-hide">
+      <div class="flex justify-between items-center min-w-max">
+        <div class="flex items-center space-x-2">
+          <div class="heartbeat text-2xl">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <span class="text-xl font-bold text-blue-800">Dr. Adeel Sabir</span>
+        </div>
+        <div class="flex space-x-1">
+          <button onclick="showPage('home')" class="nav-btn px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors nav-active" id="nav-home">Home</button>
+          <button onclick="showPage('about')" class="nav-btn px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors" id="nav-about">Journey</button>
+          <button onclick="showPage('tribute')" class="nav-btn px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors" id="nav-tribute">Tribute</button>
+          <button onclick="showPage('gallery')" class="nav-btn px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors" id="nav-gallery">Gallery</button>
+          <button onclick="showPage('contact')" class="nav-btn px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors" id="nav-contact">Contact</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="home" class="page active pt-20">
+    <div class="container mx-auto px-4 py-16 max-w-4xl">
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <div class="stethoscope-animation inline-block mb-8">
+          <div class="bg-white p-6 rounded-2xl shadow-realistic transform rotate-6 cursor-pointer hover:rotate-3 transition-transform duration-500">
+            <i class="fas fa-stethoscope text-6xl text-blue-600"></i>
+          </div>
+        </div>
+        <h1 class="text-5xl font-bold text-blue-900 mb-4">Celebrating Dr. Adeel Sabir</h1>
+        <p class="text-xl text-gray-700 mb-8">MBBS Intern at RML Lucknow</p>
+        <div class="pulse-effect inline-block mb-12">
+          <button onclick="showPage('about')" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+            Explore Journey <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Doctor Profession Details -->
+      <div class="bg-white rounded-2xl p-8 shadow-realistic text-left text-gray-800 leading-relaxed">
+        <h2 class="text-3xl font-semibold text-blue-900 mb-6">The Role & Responsibilities of a Doctor</h2>
+        <ul class="list-disc list-inside space-y-3 text-lg">
+          <li>Diagnose and treat illnesses and injuries with care and precision.</li>
+          <li>Provide compassionate patient care, ensuring comfort and understanding.</li>
+          <li>Prescribe medications and therapies tailored to individual needs.</li>
+          <li>Collaborate with healthcare teams to deliver comprehensive treatment plans.</li>
+          <li>Educate patients and communities on health maintenance and disease prevention.</li>
+          <li>Stay updated with medical research and advancements to offer the best care.</li>
+          <li>Maintain ethical standards and patient confidentiality at all times.</li>
+        </ul>
+      </div>
+      <!-- Animated Medical Bag Sticker -->
+      <div class="mt-12 flex justify-center">
+        <div class="stethoscope-animation text-red-600 text-9xl">
+          <i class="fas fa-medkit"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Journey Page -->
+  <div id="about" class="page pt-20">
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Adeel Sabir's Inspiring NEET Journey</h1>
+        <p class="text-xl text-gray-700">A story of passion, perseverance, and triumph</p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-6 text-gray-700 leading-relaxed">
+        <p>It all began in Class 11, when Adeel Sabir's passion for medicine took root. With a burning desire to become a doctor, he dedicated himself wholeheartedly to mastering the core subjects of Physics, Chemistry, and Biology. His commitment laid a strong foundation for the challenging path ahead.</p>
+        <p>To sharpen his skills and compete with the best, Adeel moved to Kota, the renowned coaching hub for NEET aspirants. Enrolled at Allen Career Institute, he faced a highly competitive and demanding environment. The rigorous schedule and immense pressure tested not only his academic abilities but also his mental resilience.</p>
+        <p>During his time in Kota, an incident highlighted his extraordinary focus. One of his friends once invited him to watch a movie. Curious, Adeel asked, "Kitne time ki hai movie?" His friend replied, "3 hours." Without a second thought, Adeel smiled and said, "Itni der mein toh main ek pura chapter complete kar lunga." This small moment reflected his determination to utilize every single hour for his dream.</p>
+        <p>However, the intense stress eventually took a toll on his mental health. Recognizing the importance of his well-being, his family brought him back home to recover. This period of rest and reflection was crucial, allowing Adeel to regain his strength and balance.</p>
+        <p>When he returned to preparation with a fresh mindset, another memorable incident took place. By now, Adeel's hair had grown so long that they touched his shoulders. With the exam approaching, his family advised, "Adeel, baal katwa ke aao." He went to the barber, but the place was overcrowded. After waiting for a while, he returned home and calmly said, "Itni der mein toh main Physics ke questions solve kar lunga." Such moments revealed how deeply his priorities were aligned with his goal.</p>
+        <p>Rejuvenated and more determined than ever, Adeel resumed his preparation with a balanced approach—combining disciplined study with self-care. His relentless hard work and unwavering spirit transformed challenges into stepping stones.</p>
+        <p>The fruits of his perseverance were evident when he scored an impressive <span class="font-semibold text-blue-700">655 marks</span> in the NEET examination. This remarkable achievement earned him a coveted seat at <span class="font-semibold text-green-700">RML Lucknow</span>, marking the beginning of his journey as a dedicated medical professional.</p>
+        <blockquote class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-md italic text-blue-800">"Success is born from struggle, and Adeel's journey is a shining example of courage and determination."</blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tribute Page -->
+  <div id="tribute" class="page pt-20">
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Tribute to Dedication</h1>
+        <p class="text-xl text-gray-700">Celebrating the heart of a healer</p>
+      </div>
+      <div class="max-w-4xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl p-8 shadow-realistic text-center">
+          <div class="heartbeat text-6xl mb-6">
+            <i class="fas fa-heart"></i>
+          </div>
+          <p class="text-gray-700 leading-relaxed">Dr. Adeel Sabir's journey is not just about academics—it is about resilience, compassion, and a lifelong dedication to healing. His story inspires countless others to never give up on their dreams.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Page -->
+  <div id="gallery" class="page pt-20">
+    <div class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">MBBS Last Day Gallery</h1>
+        <p class="text-xl text-gray-700">Memories from the final day of MBBS</p>
+      </div>
+
+      <div class="gallery-grid max-w-6xl mx-auto">
+        <div class="gallery-item">
+          <img src="image1.jpg" alt="MBBS Last Day - Dr. Adeel Sabir">
+          <div class="gallery-caption">Dr. Adeel Sabir - Final Day</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="image2.jpg" alt="MBBS Last Day - Group Photo">
+          <div class="gallery-caption">MBBS Batch - Last Day Group Photo</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="image3.jpg" alt="MBBS Last Day - With Faculty">
+          <div class="gallery-caption">With Faculty Member</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="image4.jpg" alt="MBBS Last Day - Friends">
+          <div class="gallery-caption">With Close Friends</div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <div class="stethoscope-animation text-blue-600 text-6xl">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Page -->
+  <div id="contact" class="page pt-20">
+    <div class="container mx-auto px-4 py-16 max-w-2xl">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Get in Touch</h1>
+        <p class="text-xl text-gray-700 mb-8">Connect with Dr. Adeel Sabir on Instagram or Phone</p>
+      </div>
+      <div class="flex flex-col items-center space-y-8">
+        <!-- Animated Stethoscope Sticker -->
+        <div class="stethoscope-animation text-blue-600 text-9xl mb-4">
+          <i class="fas fa-stethoscope"></i>
+        </div>
+        <!-- Instagram Contact -->
+        <a href="https://instagram.com/adeelsabir1515" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 bg-white rounded-xl shadow-realistic px-6 py-4 w-full max-w-md hover:shadow-lg transition-shadow cursor-pointer">
+          <i class="fab fa-instagram insta-icon"></i>
+          <span class="text-pink-600 font-semibold text-xl">adeelsabir1515</span>
+        </a>
+        <!-- Phone Contact -->
+        <a href="tel:+918299261430" class="flex items-center space-x-4 bg-white rounded-xl shadow-realistic px-6 py-4 w-full max-w-md hover:shadow-lg transition-shadow cursor-pointer">
+          <i class="fas fa-phone phone-icon"></i>
+          <span class="text-green-600 font-semibold text-xl">+91 82992 61430</span>
+        </a>
+        <!-- Email Contact -->
+        <a href="mailto:adeelsabir321@gmail.com" class="flex items-center space-x-4 bg-white rounded-xl shadow-realistic px-6 py-4 w-full max-w-md hover:shadow-lg transition-shadow cursor-pointer">
+          <i class="fas fa-envelope email-icon"></i>
+          <span class="text-blue-600 font-semibold text-xl">adeelsabir321@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Adeel Sabir. All rights reserved.
+  </footer>
+
+  <!-- Script for navigation -->
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('nav-active'));
+      document.getElementById('nav-' + pageId).classList.add('nav-active');
+    }
+  </script>
+</body>
+</html>
